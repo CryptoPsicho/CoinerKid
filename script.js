@@ -126,7 +126,6 @@ function createBoard(foodType) {
         buyFood.setAttribute('data-id', element.name)
         buyFood.addEventListener('click', flipCard)
         grid.appendChild(buyFood)
-    
     }
     
   });  {
