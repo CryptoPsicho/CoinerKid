@@ -51,20 +51,6 @@ let wallet = [
 
 const food = [
   {
-    name: 'apple',
-    health: 20,
-    img: "https://w7.pngwing.com/pngs/765/668/png-transparent-charlotte-varenye-apple-fruit-apple-fruit-natural-foods-food-fruit-thumbnail.png",
-    location: "Store",
-    type: "Fruit"
-  },
-  {
-    name: 'banana',
-    health: 30,
-    img: "https://image.similarpng.com/very-thumbnail/2022/01/Banana-fruit-isolated-on-transparent-background-PNG.png",
-    location: "Store",
-    type: "Fruit"
-  },
-  {
     name: 'kiwi',
     health: 20,
     img:"https://www.pintarmewarnai.com/png/thumb/qVuWdxvMuhPKklt-Kiwi-Fruit-PNG.png",
@@ -115,8 +101,43 @@ const locations = [
     "button text": ["Buy Fruit", "Buy Candies", "Go Home"],
 		"button functions": [buyFruit, buyCandies, goHome],
 		text: "You enter the store. Do you wat to buy some healthy fruit or some candies?"  
-  }
+  },
+  {
+    name: "Italian Restaurant",
+    "button text": ["Buy Pasta", "Buy Pizza", "Go Home"],
+    "button functions": [buyPasta, buyPizza, goHome],
+		text: "You enter the Italian Restaurant. Do you want to buy some pasta or a pizza?"  
+  },
+  {
+    name: "McDonald",
+    "button text": ["Buy Burger", "Buy Fries", "Go Home"],
+    "button functions": [buyBurger, buyFries, goHome],
+		text: "You enter McDonald. Do you want to buy a burger or fries?"  
+  },
+  {
+    name: "Home",
+    "button text": ["Go to Store", "Go to Italian Restaurant", "Go to McDonald"],
+    "button functions": [goStore, goRestaurant, goMcDonald],
+		text: "You are at home. You want to eat something. Let's go out to buy some food!"  
+  },
 ];
+
+// initialize buttons
+button1.onclick = goStore;
+button2.onclick = goRestaurant;
+button3.onclick = goMcDonald;
+
+
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerText = location.text;    
+}
+
 
 function createBoard(foodType) {
   food.forEach(element => {
@@ -127,10 +148,7 @@ function createBoard(foodType) {
         buyFood.addEventListener('click', flipCard)
         grid.appendChild(buyFood)
     }
-    
-  });  {
-    const card = document.createElement('img')
-  }
+  });  
 }
 
 
