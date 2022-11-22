@@ -76,14 +76,14 @@ const food = [
     health: 5,
     img: "https://e7.pngegg.com/pngimages/280/611/png-clipart-pizza-hamburger-submarine-sandwich-restaurant-oven-pizza-food-cheese-thumbnail.png",
     location: "Restaurant",
-    type: "Food"
+    type: "ItalianFood"
   },
   {
     name: 'pasta',
     health: 10,
     img: "https://image.similarpng.com/very-thumbnail/2022/03/Spaghetti-in-dish-isolated-on-transparent-background-PNG.png",
     location: "Restaurant",
-    type: "Food"
+    type: "ItalianFood"
   },
   {
     name: 'fries',
@@ -118,13 +118,19 @@ const locations = [
   }
 ];
 
-function createBoard(food) {
-  for each  {
+function createBoard(foodType) {
+  food.forEach(element => {
+    if (element.type === foodType){
+        const buyFood = document.createElement('img')
+        buyFood.setAttribute('src', element.img)
+        buyFood.setAttribute('data-id', element.name)
+        buyFood.addEventListener('click', flipCard)
+        grid.appendChild(buyFood)
+    
+    }
+    
+  });  {
     const card = document.createElement('img')
-    card.setAttribute('src', 'images/blank.png')
-    card.setAttribute('data-id', i)
-    card.addEventListener('click', flipCard)
-    grid.appendChild(card)
   }
 }
 
