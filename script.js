@@ -97,6 +97,12 @@ const food = [
 
 const locations = [
   {
+    name: "Home",
+    "button text": ["Go to Store", "Go to Italian Restaurant", "Go to McDonald"],
+    "button functions": [goStore, goRestaurant, goMcDonald],
+		text: "You are at home. You want to eat something. Let's go out to buy some food!"  
+  },  
+  {
     name: "Store",
     "button text": ["Buy Fruit", "Buy Candies", "Go Home"],
 		"button functions": [buyFruit, buyCandies, goHome],
@@ -114,12 +120,7 @@ const locations = [
     "button functions": [buyBurger, buyFries, goHome],
 		text: "You enter McDonald. Do you want to buy a burger or fries?"  
   },
-  {
-    name: "Home",
-    "button text": ["Go to Store", "Go to Italian Restaurant", "Go to McDonald"],
-    "button functions": [goStore, goRestaurant, goMcDonald],
-		text: "You are at home. You want to eat something. Let's go out to buy some food!"  
-  },
+
 ];
 
 // initialize buttons
@@ -127,6 +128,17 @@ button1.onclick = goStore;
 button2.onclick = goRestaurant;
 button3.onclick = goMcDonald;
 
+function createBoard(location) {
+  food.forEach(element => {
+    if (element.location == location){
+        const buyFood = document.createElement('img')
+        buyFood.setAttribute('src', element.img)
+        buyFood.setAttribute('data-id', element.name)
+        buyFood.addEventListener('click', askMoney)
+        grid.appendChild(buyFood)
+    }
+  });  
+};
 
 function update(location) {
   button1.innerText = location["button text"][0];
@@ -135,23 +147,32 @@ function update(location) {
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
-  text.innerText = location.text;    
-}
+  text.innerText = location.text;
+  createBoard(location)
+};
 
+function goHome() {
+  update(locations[0]);
+};
 
-function createBoard(foodType) {
-  food.forEach(element => {
-    if (element.type === foodType){
-        const buyFood = document.createElement('img')
-        buyFood.setAttribute('src', element.img)
-        buyFood.setAttribute('data-id', element.name)
-        buyFood.addEventListener('click', flipCard)
-        grid.appendChild(buyFood)
-    }
-  });  
-}
+function goStore() {
+  update(locations[1]);
+};
 
+function goRestaurant() {
+  update(locations[2]);
+};
 
-function buyFruit () {
+function goMcDonald() {
+  update(locations[3]);
+};
+
+//write askMoney function
+function askMoney () {
+
+};
+function buy () {
   //present fruit
 };
+
+
