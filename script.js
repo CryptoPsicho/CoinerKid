@@ -115,19 +115,19 @@ const locations = [
   {
     name: "Store",
     "button text": ["Buy Fruit", "Buy Candies", "Go Home"],
-		"button functions": [buyFruit, buyCandies, goHome],
+		"button functions": [buy, buy, goHome],
 		text: "You enter the store. Do you wat to buy some healthy fruit or some candies?"  
   },
   {
     name: "Italian Restaurant",
     "button text": ["Buy Pasta", "Buy Pizza", "Go Home"],
-    "button functions": [buyPasta, buyPizza, goHome],
+    "button functions": [buy, buy, goHome],
 		text: "You enter the Italian Restaurant. Do you want to buy some pasta or a pizza?"  
   },
   {
     name: "McDonald",
     "button text": ["Buy Burger", "Buy Fries", "Go Home"],
-    "button functions": [buyBurger, buyFries, goHome],
+    "button functions": [buy, buy, goHome],
 		text: "You enter McDonald. Do you want to buy a burger or fries?"  
   },
   {
