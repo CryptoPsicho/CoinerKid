@@ -258,11 +258,11 @@ function buy() {
   }
   else {
     alert("You gave me too much many. How much change do you want?")
-    goChange()
     let payment1 = payment
     let price1 = price
     payment = 0
     price = 0
+    goChange()
     text.innerText = "How much is the change of " + payment1 + " - " + price1 + " = "
   }
 };
