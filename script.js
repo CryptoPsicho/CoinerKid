@@ -9,9 +9,13 @@ const text = document.querySelector("#text");
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
-const foodGrid = document.querySelector('#foodGrid');
+const food1 = document.querySelector('#food1');
+const food2 = document.querySelector('#food2');
 const moneyGrid = document.querySelector('#moneyGrid');
+const moneyGrid1 = document.querySelector('#moneyGrid1');
 const paymentGrid = document.querySelector('#paymentGrid');
+const paymentGrid1 = document.querySelector('#paymentGrid1');
+
 
 const wallet = [
   {
