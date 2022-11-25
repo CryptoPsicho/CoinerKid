@@ -12,9 +12,11 @@
 
 <body>
   <div class="container-fluid" id="game">
+
     <div class="row justify-content-center align-items-center">
       <div class="col">COINER KID</div>
     </div>
+
     <div class="row">
       <div class="col-2">Food:</div>
       <div class="col-2" id="foodText">0</div>
@@ -24,25 +26,48 @@
       <div class="col-2">Wallet: </div>
       <div class="col-2"id="walletText">700</div>
     </div>
-    <div id="row justify-content-center align-items-center">
-      <button type="button" class="btn btn-outline-dark" id="button1">Go to store</button>
-      <button type="button" class="btn btn-outline-dark" id="button2">Eat</button>
-      <button type="button" class="btn btn-outline-dark" id="button3">Go Home</button>
+
+    <div class="row justify-content-center align-items-center">
+      <div class="col-3"><button type="button" class="btn btn-outline-dark" class="text-nowrap" id="button1">Go to store</button></div>
+      <div class="col-3"><button type="button" class="btn btn-outline-dark" class="text-nowrap" id="button2">Eat</button></div>
+      <div class="col-3"><button type="button" class="btn btn-outline-dark" class="text-nowrap" id="button3">Go Home</button></div>
     </div>
     <div class="row">
-      
-      
+      <div id="text">Do you want to buy some food?</div>
     </div>
-    <div class="grid" id="foodGrid"></div>
-    <div class="grid" id="moneyGrid"></div>
-    <div class="grid" id="paymentGrid"></div>
     
-    <div id="text">Do you want to buy some food?</div>
+    <div class="row"></div>
+   
+    <div class="container-fluid" id="grids">
+      <div class="col-2" id="foodGrid">
+        <div class="row" id="food1"></div>
+        <div class="row" id="food2"></div>
+      </div>
+      <div class="col-2" id="moneyGrid">
+        <div class="row" id="ONECENT"></div>
+        <div class="row" id="TWOCENT"></div>
+        <div class="row" id="FIVECENT"></div>
+        <div class="row" id="TENCENT"></div>
+      </div>
+      <div class="col-2" id="moneyGrid1">
+        <div class="row" id="TWENTYCENT"></div>
+        <div class="row" id="FIFTYCENT"></div>
+        <div class="row" id="EURO"></div>
+      </div>
+      <div class="col-2" id="paymentGrid">
+        <div class="row" id="payedTWENTYCENT"></div>
+        <div class="row" id="payedFIFTYCENT"></div>
+        <div class="row" id="payedEURO"></div>
+      </div>
+      <div class="col-2" id="paymentGrid">
+        <div class="row" id="payedONECENT"></div>
+        <div class="row" id="payedTWOCENT"></div>
+        <div class="row" id="payedFIVECENT"></div>
+        <div class="row" id="payedTENCENT"></div>
+      </div>
 
 
 
-
-  </div>
   <script src="script.js"></script>
 
   <!--
