@@ -2,19 +2,13 @@ let price = 0;
 let payment = 0;
 let change = 0;
 
-const foodText = document.querySelector("#foodText");
-const healthText = document.querySelector("#healthText");
-const walletText = document.querySelector("#walletText");
 const text = document.querySelector("#text");
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
-const food1 = document.querySelector('#food1');
-const food2 = document.querySelector('#food2');
+const foodGrid = document.querySelector('#foodGrid');
 const moneyGrid = document.querySelector('#moneyGrid');
-const moneyGrid1 = document.querySelector('#moneyGrid1');
 const paymentGrid = document.querySelector('#paymentGrid');
-const paymentGrid1 = document.querySelector('#paymentGrid1');
 
 
 const wallet = [
@@ -22,44 +16,44 @@ const wallet = [
     coin: "ONECENT",
     value: 1,
     quantity: 100,
-    img: "https://www.kindpng.com/picc/m/553-5532338_1-euro-cent-common-1-cent-coin-png.png"
+    img: 'coin_img/1-cent.png'
   },
   {
     coin: "TWOCENT",
     value: 2,
     quantity: 50,
-    img: "https://www.kindpng.com/picc/m/209-2098026_transparent-50-cent-png-5-euro-cent-clipart.png"
+    img: 'coin_img/2-cent.png'
   },
   {
     coin: "FIVECENT",
     value: 5,
     quantity: 20,
-    img: "https://img.favpng.com/16/24/4/euro-coins-5-cent-euro-coin-1-cent-euro-coin-10-cent-euro-coin-png-favpng-CKQdX3BssViERnLsgT9dqzADd.jpg"
+    img: 'coin_img/5-cent.jpg'
 
   },
   {
     coin: "TENCENT",
     value: 10,
     quantity: 10,
-    img: "https://img.favpng.com/6/20/23/euro-coins-10-cent-euro-coin-1-cent-euro-coin-50-cent-euro-coin-png-favpng-1G2Kgyp2SXe7JuKJUzHWzqtdL.jpg"
+    img: 'coin_img/10-cent.jpg'
   },
   {
     coin: "TWENTYCENT",
     value: 20,
     quantity: 5,
-    img: "https://img.favpng.com/4/12/1/20-cent-euro-coin-euro-coins-png-favpng-veN86KmhvZWMppyYwJEAWDZ0k.jpg"
+    img: 'coin_img/20-cent.jpg'
   },
   {
     coin: "FIFTYCENT",
     value: 50,
     quantity: 2,
-    img: "https://img.favpng.com/15/1/23/20-cent-euro-coin-1-cent-euro-coin-20-euro-note-10-cent-euro-coin-png-favpng-MuecrPVH2spFfM1SSTwkNCCB8.jpg"
+    img: 'coin_img/50-cent.jpg'
   },
   {
     coin: "EURO",
     value: 100,
     quantity: 1,
-    img: "https://img.favpng.com/21/7/4/coin-circle-font-png-favpng-AXXMSVqDfCFgvLpgPqu2wzFAB.jpg"
+    img: 'coin_img/euro.jpg'
   }
 ];
 
@@ -67,28 +61,28 @@ const food = [
   {
     name: 'kiwi',
     health: 20,
-    img:"https://www.pintarmewarnai.com/png/thumb/qVuWdxvMuhPKklt-Kiwi-Fruit-PNG.png",
+    img: 'food_img/kiwi.png',
     location: "Store",
     type: "Fruit"
   },
   {
     name: 'pizza',
     health: 5,
-    img: "https://e7.pngegg.com/pngimages/280/611/png-clipart-pizza-hamburger-submarine-sandwich-restaurant-oven-pizza-food-cheese-thumbnail.png",
+    img: 'food_img/pizza.png',
     location: "Restaurant",
     type: "ItalianFood"
   },
   {
     name: 'pasta',
     health: 10,
-    img: "https://image.similarpng.com/very-thumbnail/2022/03/Spaghetti-in-dish-isolated-on-transparent-background-PNG.png",
+    img: 'food_img/pasta.png',
     location: "Restaurant",
     type: "ItalianFood"
   },
   {
     name: 'fries',
     health: -20,
-    img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/French_Fries.png",
+    img: 'food_img/fries.png',
     location: "McDonald",
     type: "JunkFood"
 
@@ -96,14 +90,14 @@ const food = [
   {
     name: 'hamburger',
     health: -10,
-    img: "https://image.similarpng.com/very-thumbnail/2020/04/Floating-burger-PNG.png",
+    img: 'food_img/hamburger.png',
     location: "McDonald",
     type: "JunkFood"
   },
   {
     name: 'candies',
     health: -30,
-    img: "https://purepng.com/public/uploads/large/purepng.com-button-candyfood-sweet-tasty-taste-candy-941524599400vexkj.png",
+    img: 'food_img/candies.png',
     location: "Store",
     type: "Candies"
   },
@@ -123,7 +117,7 @@ const locations = [
 		text: "You enter the store. Do you wat to buy some healthy fruit or some candies?"  
   },
   {
-    name: "Italian Restaurant",
+    name: "Restaurant",
     "button text": ["Buy Pasta", "Buy Pizza", "Go Home"],
     "button functions": [buy, buy, goHome],
 		text: "You enter the Italian Restaurant. Do you want to buy some pasta or a pizza?"  
@@ -146,23 +140,24 @@ const locations = [
 button1.onclick = goStore;
 button2.onclick = goRestaurant;
 button3.onclick = goMcDonald;
+moneyGrid.onclick = addMoney()
 
 function createWallet() {
   wallet.forEach(element => {
     const coin = document.createElement('img')
     coin.setAttribute('src', element.img)
-    coin.setAttribute('data-id', element.coin)
+    coin.setAttribute('dataId', element.coin)
     coin.addEventListener('click', addMoney)
     moneyGrid.appendChild(coin)
   })
-};
+}
 
-function createBoard(location) {
+function createBoard(loc) {
   food.forEach(element => {
-    if (element.location == location){
+    if (element.location == loc){
         const buyFood = document.createElement('img')
         buyFood.setAttribute('src', element.img)
-        buyFood.setAttribute('data-id', element.name)
+        buyFood.setAttribute('dataId', element.name)
         buyFood.addEventListener('click', askMoney)
         foodGrid.appendChild(buyFood)
     }
@@ -177,7 +172,7 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
-  createBoard(location)
+  createBoard(location.name)
 };
 
 function goHome() {
@@ -199,32 +194,30 @@ function goMcDonald() {
 function goChange() {
   update(location[4])
   createWallet()
-  paymentGrid.querySelectorAll('*').forEach( n => n.remove())
+  //paymentGrid.querySelectorAll('*').forEach( n => n.remove())
 };
 
-
-
-//write askMoney function
 function askMoney () {
   price = Math.floor(Math.random() * 100)
-  button1.innerText = "";
-  button2.innerText = "PAY";
-  button3.innerText = "";
-  button1.onclick = nothing();
-  button2.onclick = buy();
-  button3.onclick = nothing();
-  text.innerText = 'You have to pay ${price} cents'
+  button1.innerText = ""
+  button2.innerText = "PAY"
+  button3.innerText = ""
+  button1.onclick = nothing
+  button2.onclick = buy
+  button3.onclick = nothing
+  text.innerText = 'You have to pay ' + price + ' cents'
   createWallet()
 };
 
-function addMoney () {
-  let coinId = this.getAttribute('data-id')
+function addMoney (event) {
+  let coinId = event.currentTarget.attributes.coin
   payment += wallet[coinId].value
-  const payedcoin = document.createElement('img')
-  coin.setAttribute('src', wallet[coinId].img)
-  coin.setAttribute('data-id', wallet[coinId].coin)
-  coin.addEventListener('click', removeCoin(coinId))
-  paymentGrid.appendChild(coin)
+  const payedCoin = document.createElement('img')
+  payedCoin.setAttribute('src', wallet[coinId].img)
+  payedCoin.setAttribute('dataID', wallet[coinId].coin)
+  payedCoin.setAttribute('value', wallet[coinId].value)
+  //payedCoin.addEventListener('click', removeCoin)
+  paymentGrid.appendChild(payedCoin)
 
   };
 
@@ -254,7 +247,7 @@ function buy() {
   if (change < 0) {
     alert("You have not payed enough")
   }
-  else if (change = 0) {
+  else if (change === 0) {
     alert("Thank you very much! Enjoy your food and have a nice day!")
     payment = 0
     price = 0
